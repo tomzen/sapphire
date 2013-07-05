@@ -188,6 +188,18 @@ class DataList extends ViewableData implements SS_List, SS_Filterable, SS_Sortab
 			$query->where($filter);
 		});
 	}
+	
+    	/**
+   	 * Return a new DataList instance with a GROUP BY clause added to this list's query.
+   	 *
+   	 * @param string $filter Escaped SQL statement
+   	 * @return DataList
+   	 */
+   	public function groupBy($filter) {
+   		return $this->alterDataQuery_30(function($query) use ($filter){
+   			$query->groupBy($filter);
+   		});
+   	}
 
 	/**
 	 * Returns true if this DataList can be sorted by the given field.
